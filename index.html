@@ -28,6 +28,7 @@
                 <li><a href="#home">홈</a></li>
                 <li><a href="#about">게임 소개</a></li>
                 <li><a href="#guide">게임 가이드</a></li>
+                <li><a href="#download">게임 다운로드</a></li>
                 <li><a href="#contact">연락처</a></li>
             </ul>
             <button class="navbar-toggle">
@@ -71,6 +72,24 @@
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+        </div>
+    </section>
+
+    <!-- 다운로드 섹션 -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">게임 다운로드</h2>
+            <div class="download-content">
+                <div class="download-info">
+                    <p>포케헌트를 지금 다운로드하고 복고 픽셀 몬스터 수집육성 게임의 세계로 들어가세요!</p>
+                    <p>지원 플랫폼: Windows, macOS, Android</p>
+                </div>
+                <div class="download-buttons">
+                    <a href="#" class="btn btn-primary btn-large">PC 버전 다운로드</a>
+                    <a href="#" class="btn btn-secondary btn-large">모바일 버전 다운로드</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -122,15 +141,15 @@
                     </div>
                 </div>
                 <!-- 제어 버튼 -->
-                <a class="slider-prev" onclick="plusSlides(-1)">&lt;</a>
-                <a class="slider-next" onclick="plusSlides(1)">&gt;</a>
+                <a class="slider-prev" onclick="plusFeatureSlides(-1)">&lt;</a>
+                <a class="slider-next" onclick="plusFeatureSlides(1)">&gt;</a>
                 <!-- 인디케이터 -->
                 <div class="slider-dots">
-                    <span class="slider-dot" onclick="currentSlide(1)"></span>
-                    <span class="slider-dot" onclick="currentSlide(2)"></span>
-                    <span class="slider-dot" onclick="currentSlide(3)"></span>
-                    <span class="slider-dot" onclick="currentSlide(4)"></span>
-                    <span class="slider-dot" onclick="currentSlide(5)"></span>
+                    <span class="slider-dot" onclick="currentFeatureSlide(1)"></span>
+                    <span class="slider-dot" onclick="currentFeatureSlide(2)"></span>
+                    <span class="slider-dot" onclick="currentFeatureSlide(3)"></span>
+                    <span class="slider-dot" onclick="currentFeatureSlide(4)"></span>
+                    <span class="slider-dot" onclick="currentFeatureSlide(5)"></span>
                 </div>
             </div>
         </div>
@@ -198,11 +217,12 @@
                     <h3>포케헌트</h3>
                 </div>
                 <div class="footer-links">
-                    <a href="#home">홈</a>
-                    <a href="#about">게임 소개</a>
-                    <a href="#guide">게임 가이드</a>
-                    <a href="#contact">연락처</a>
-                </div>
+                <a href="#home">홈</a>
+                <a href="#about">게임 소개</a>
+                <a href="#guide">게임 가이드</a>
+                <a href="#download">게임 다운로드</a>
+                <a href="#contact">연락처</a>
+            </div>
                 <div class="footer-copyright">
                     <p>&copy; 2026 Pokehunt. All rights reserved.</p>
                     <p><a href="mailto:game@pokegm.com" class="contact-email">game@pokegm.com</a></p>
@@ -213,22 +233,23 @@
 
     <!-- 자바스크립트 -->
     <script>
-        // 슬라이드 쇼
+        // 顶部主轮播图
         let slideIndex = 1;
-        showSlides(slideIndex);
+        showHeroSlides(slideIndex);
 
         function plusSlides(n) {
-            showSlides(slideIndex += n);
+            showHeroSlides(slideIndex += n);
         }
 
         function currentSlide(n) {
-            showSlides(slideIndex = n);
+            showHeroSlides(slideIndex = n);
         }
 
-        function showSlides(n) {
+        // 顶部主轮播图控制
+        function showHeroSlides(n) {
             let i;
-            let slides = document.getElementsByClassName("slider-slide");
-            let dots = document.getElementsByClassName("slider-dot");
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
             for (i = 0; i < slides.length; i++) {
@@ -240,11 +261,45 @@
             slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
         }
+        
+        // 游戏特色轮播图控制
+        let featureSlideIndex = 1;
+        showFeatureSlides(featureSlideIndex);
+        
+        function plusFeatureSlides(n) {
+            showFeatureSlides(featureSlideIndex += n);
+        }
+        
+        function currentFeatureSlide(n) {
+            showFeatureSlides(featureSlideIndex = n);
+        }
+        
+        function showFeatureSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slider-slide");
+            let dots = document.getElementsByClassName("slider-dot");
+            if (n > slides.length) {featureSlideIndex = 1}
+            if (n < 1) {featureSlideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[featureSlideIndex-1].style.display = "block";
+            dots[featureSlideIndex-1].className += " active";
+        }
 
-        // 자동 슬라이드
+        // 自动轮播
+        // 顶部主轮播图自动轮播
         setInterval(() => {
             plusSlides(1);
         }, 5000);
+        
+        // 游戏特色轮播图自动轮播
+        setInterval(() => {
+            plusFeatureSlides(1);
+        }, 4000);
 
         // 모바일 메뉴 토글
         const navbarToggle = document.querySelector('.navbar-toggle');
