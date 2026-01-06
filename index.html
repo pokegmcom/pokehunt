@@ -102,13 +102,36 @@
                     </div>
                 </div>
             </div>
-            <!-- 게임 특색 수직 이미지 갤러리 -->
-            <div class="about-vertical-images">
-                <img src="1.jpg" alt="게임 특색 이미지1" class="vertical-image">
-                <img src="2.jpg" alt="게임 특색 이미지2" class="vertical-image">
-                <img src="3f.jpg" alt="게임 특색 이미지3" class="vertical-image">
-                <img src="4.jpg" alt="게임 특색 이미지4" class="vertical-image">
-                <img src="5.jpg" alt="게임 특색 이미지5" class="vertical-image">
+            <!-- 게임 특색 이미지 슬라이드쇼 -->
+            <div class="about-slider">
+                <div class="slider-container">
+                    <div class="slider-slide fade">
+                        <img src="1.jpg" alt="게임 특색 이미지1" class="slider-image">
+                    </div>
+                    <div class="slider-slide fade">
+                        <img src="2.jpg" alt="게임 특색 이미지2" class="slider-image">
+                    </div>
+                    <div class="slider-slide fade">
+                        <img src="3f.jpg" alt="게임 특색 이미지3" class="slider-image">
+                    </div>
+                    <div class="slider-slide fade">
+                        <img src="4.jpg" alt="게임 특색 이미지4" class="slider-image">
+                    </div>
+                    <div class="slider-slide fade">
+                        <img src="5.jpg" alt="게임 특색 이미지5" class="slider-image">
+                    </div>
+                </div>
+                <!-- 제어 버튼 -->
+                <a class="slider-prev" onclick="plusSlides(-1)">&lt;</a>
+                <a class="slider-next" onclick="plusSlides(1)">&gt;</a>
+                <!-- 인디케이터 -->
+                <div class="slider-dots">
+                    <span class="slider-dot" onclick="currentSlide(1)"></span>
+                    <span class="slider-dot" onclick="currentSlide(2)"></span>
+                    <span class="slider-dot" onclick="currentSlide(3)"></span>
+                    <span class="slider-dot" onclick="currentSlide(4)"></span>
+                    <span class="slider-dot" onclick="currentSlide(5)"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -204,8 +227,8 @@
 
         function showSlides(n) {
             let i;
-            let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
+            let slides = document.getElementsByClassName("slider-slide");
+            let dots = document.getElementsByClassName("slider-dot");
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
             for (i = 0; i < slides.length; i++) {

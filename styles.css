@@ -298,49 +298,93 @@ body {
     font-size: 0.95rem;
 }
 
-/* 수직 특색 이미지 표시 */
-.about-vertical-images {
+/* 게임 특색 이미지 슬라이드쇼 */
+.about-slider {
     margin-top: 4rem;
-    overflow-x: auto;
-    padding: 1rem 0;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.about-vertical-images::-webkit-scrollbar {
-    height: 8px;
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: var(--light-color);
 }
 
-.about-vertical-images::-webkit-scrollbar-track {
-    background: var(--gray-color);
-    border-radius: 4px;
+.slider-slide {
+    display: none;
+    width: 100%;
+    height: 100%;
 }
 
-.about-vertical-images::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.about-vertical-images::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+.slider-slide:hover .slider-image {
+    transform: scale(1.02);
 }
 
-.vertical-image {
-    height: 400px;
+/* 슬라이드 제어 버튼 -扁平化设计 */
+.slider-prev, .slider-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
     width: auto;
-    margin-right: 1rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow-lg);
-    transition: transform 0.3s ease;
+    padding: 16px;
+    margin-top: -22px;
+    color: var(--white-color);
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    outline: none;
 }
 
-.vertical-image:hover {
-    transform: scale(1.05);
+.slider-next {
+    right: 0;
+    border-radius: 4px 0 0 4px;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .vertical-image {
-        height: 300px;
-    }
+.slider-prev:hover, .slider-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 인디케이터 -扁平化设计 */
+.slider-dots {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--white-color);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.slider-dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 6px;
+    background-color: var(--gray-color);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.slider-dot.active, .slider-dot:hover {
+    background-color: var(--primary-color);
 }
 
 
@@ -552,11 +596,46 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
     }
+    
+    /* 轮播图响应式设计 */
+    .slider-container {
+        height: 300px;
+    }
+    
+    .slider-prev, .slider-next {
+        font-size: 20px;
+        padding: 12px;
+    }
+    
+    .slider-dot {
+        height: 10px;
+        width: 10px;
+    }
 }
 
 @media (max-width: 480px) {
     .navbar-brand h1 {
         font-size: 1.2rem;
+    }
+    
+    /* 轮播图在小屏幕上的响应式设计 */
+    .slider-container {
+        height: 250px;
+    }
+    
+    .slider-prev, .slider-next {
+        font-size: 18px;
+        padding: 10px;
+    }
+    
+    .slider-dots {
+        padding: 15px;
+    }
+    
+    .slider-dot {
+        height: 8px;
+        width: 8px;
+        margin: 0 4px;
     }
     
     .hero {
