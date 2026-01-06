@@ -391,7 +391,7 @@ body {
 .slider-dot.active, .slider-dot:hover {
     background-color: var(--primary-color);
 }
-/* 다운로드 영역 */
+/* 예약 영역 */
 .download {
     padding: 8rem 0;
     background-color: var(--light-color);
@@ -634,7 +634,7 @@ body {
         gap: 1.5rem;
     }
     
-    /* 轮播图响应式设计 */
+    /* 슬라이드 반응형 디자인 */
     .slider-container {
         max-height: 400px;
     }
@@ -659,7 +659,7 @@ body {
         font-size: 1.2rem;
     }
     
-    /* 轮播图在小屏幕上的响应式设计 */
+    /* 작은 화면에서의 슬라이드 반응형 디자인 */
     .slider-container {
         max-height: 300px;
     }
