@@ -311,24 +311,29 @@ body {
 .slider-container {
     position: relative;
     width: 100%;
-    height: 450px;
+    height: auto;
+    max-height: 600px;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background-color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slider-slide {
     display: none;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .slider-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     transition: transform 0.5s ease;
+    max-height: 600px;
 }
 
 .slider-slide:hover .slider-image {
@@ -599,7 +604,11 @@ body {
     
     /* 轮播图响应式设计 */
     .slider-container {
-        height: 300px;
+        max-height: 400px;
+    }
+    
+    .slider-image {
+        max-height: 400px;
     }
     
     .slider-prev, .slider-next {
@@ -620,7 +629,11 @@ body {
     
     /* 轮播图在小屏幕上的响应式设计 */
     .slider-container {
-        height: 250px;
+        max-height: 300px;
+    }
+    
+    .slider-image {
+        max-height: 300px;
     }
     
     .slider-prev, .slider-next {
